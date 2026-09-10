@@ -1,7 +1,5 @@
 # MCP Browser Runtime
 
-[![CI](https://github.com/Mhrnqaruni/mcp-browser-runtime/actions/workflows/ci.yml/badge.svg)](https://github.com/Mhrnqaruni/mcp-browser-runtime/actions/workflows/ci.yml)
-
 A local, Node.js [Model Context Protocol](https://modelcontextprotocol.io/) server
 for browser inspection and explicitly approved interaction, built with Playwright.
 It combines configurable capture profiles, bounded responses, multi-page/frame
