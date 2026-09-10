@@ -1,0 +1,9 @@
+name: Feature proposal
+description: Propose a capability with explicit authority and validation requirements.
+body:
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Use case, permission boundaries, and acceptance evidence
+    validations:
+      required: true

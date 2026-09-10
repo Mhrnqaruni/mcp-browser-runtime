@@ -1,0 +1,73 @@
+{
+  "name": "mcp-browser-runtime",
+  "version": "2.0.0",
+  "description": "Experimental Playwright MCP runtime with capture profiles, response budgets, and multi-page browser tools. Under security hardening.",
+  "private": true,
+  "files": [
+    "src/*.js",
+    "src/browser/*.js",
+    "src/security/*.js",
+    "src/server/*.js",
+    "src/tools/*.js",
+    "docs/*.md",
+    "LICENSE",
+    "SECURITY.md",
+    "CONTRIBUTING.md",
+    "CHANGELOG.md"
+  ],
+  "main": "src/mcp-browser-server.js",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "packageManager": "npm@11.15.0",
+  "scripts": {
+    "doctor": "node src/cli.js doctor",
+    "demo:site": "node examples/demo-site.js",
+    "test": "node --test --test-concurrency=1 test/*.test.js",
+    "test:unit": "node --test test/policies.test.js test/publication.test.js",
+    "test:protocol": "node --test test/protocol.test.js",
+    "test:integration": "node --test test/browser.test.js",
+    "lint": "eslint src test tools",
+    "format": "prettier --write src test tools package.json eslint.config.js",
+    "format:check": "prettier --check src test tools package.json eslint.config.js",
+    "docs:generate": "node tools/tool-reference.mjs",
+    "docs:check": "node tools/tool-reference.mjs --check",
+    "audit": "npm audit --omit=dev",
+    "test:publication": "node --test test/publication.test.js",
+    "pack:check": "node tools/check-package.mjs",
+    "pack:verify": "node tools/verify-packed.mjs",
+    "start": "node src/mcp-browser-server.js",
+    "test:local": "npm test",
+    "test:all": "npm test"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "playwright",
+    "browser-automation",
+    "accessibility",
+    "developer-tools",
+    "ai-tools"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mhrnqaruni/mcp-browser-runtime.git"
+  },
+  "author": "Mhrnqaruni",
+  "bugs": {
+    "url": "https://github.com/Mhrnqaruni/mcp-browser-runtime/issues"
+  },
+  "homepage": "https://github.com/Mhrnqaruni/mcp-browser-runtime#readme",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "pdf-parse": "2.4.5",
+    "playwright": "1.63.0",
+    "zod": "4.6.1"
+  },
+  "devDependencies": {
+    "eslint": "10.10.0",
+    "prettier": "3.9.6"
+  }
+}

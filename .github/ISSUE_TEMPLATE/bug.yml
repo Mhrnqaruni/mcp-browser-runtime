@@ -1,0 +1,16 @@
+name: Bug report
+description: Report a reproducible defect using synthetic data only.
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Commit, OS, Node version, MCP client
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction and expected / actual behavior
+      description: Use a local synthetic fixture. Do not post secrets or vulnerability details here.
+    validations:
+      required: true
