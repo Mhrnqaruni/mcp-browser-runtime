@@ -23,6 +23,15 @@ jobs:
           cache: npm
       - run: npm ci --ignore-scripts
       - run: node node_modules/playwright/cli.js install --with-deps chromium
+      - name: Use the hosted Linux image's Chromium sandbox helper
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          set -euo pipefail
+          helper=/opt/google/chrome/chrome-sandbox
+          test -f "$helper" && test -u "$helper"
+          test "$(stat -c %u "$helper")" = 0
+          echo "CHROME_DEVEL_SANDBOX=$helper" >> "$GITHUB_ENV"
       - run: npm run lint
       - run: npm run format:check
       - run: npm test
