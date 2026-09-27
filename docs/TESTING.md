@@ -47,6 +47,14 @@ The local environment is Windows, Node 24.13.0, npm 11.15.0. CI targets Node 22
 and 24 on Windows/Ubuntu, but a configured matrix is not evidence of passing CI.
 No macOS validation or client compatibility certification is claimed.
 
+On newer Ubuntu images, AppArmor can prevent downloaded Chromium from creating
+its sandbox. CI uses the hosted image's existing root-owned, setuid
+`/opt/google/chrome/chrome-sandbox` helper through `CHROME_DEVEL_SANDBOX` and fails
+if that helper is unavailable. It does not set `chromiumSandbox: false` or change
+global namespace restrictions. This follows the supported helper approach in
+[Chromium's sandbox guidance](https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md).
+Do not install untrusted setuid binaries or disable sandboxing to bypass a failure.
+
 The adopted ESLint rules check selected correctness errors; they are not a full
 type system or comprehensive static audit. Prettier checks formatting. Full tool
 behavior, every failure/race, TLS/proxy edge cases, state privacy, and disabled
